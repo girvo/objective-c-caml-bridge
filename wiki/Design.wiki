@@ -11,3 +11,9 @@ ObjC is dynamically typed, Objective Caml is statically typed. The match cannot 
   * An ObjC class is an OCaml object with as methods the class methods of the Objc Class.
   * ObjC objects are lifted to OCaml as opaque objects, using phantom types (e.g. [`NSString] NSObject)
   * and then encapsulated in OCaml objects with all the instance methods of the original ObjC class
+
+= Source Organization =
+  * generator/ : contains the "compiler", which parses .h from frameworks headers directories and generates stub code (.ml and .m files)
+  * support/ : .ml and .m providing run-time support, such as method invocation, callback support, etc.
+  * foundation/ and appkit/: generated stubs
+  * mk/ various makefile components for building; please avoid changes in this area or changing the structure of the build system.
