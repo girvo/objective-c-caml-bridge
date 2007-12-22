@@ -1,0 +1,13 @@
+#Design principles
+
+= Introduction =
+
+ObjC is dynamically typed, Objective Caml is statically typed. The match cannot be achieved perfectly. This is a best-effort. Instead of starting from exhaustive abstract definitions of type systems and/or syntax, we instead incrementally build a lexer, parser, stub generator and run-time support to include more and more features of various Mac OS X frameworks.
+
+
+= Details =
+
+  * One unique stub code to invoke ObjC methods from OCaml; this uses NSInvocation, and should be familiar to anyone having looked at the OLE/Comm dispatching style of  API.
+  * An ObjC class is an OCaml object with as methods the class methods of the Objc Class.
+  * ObjC objects are lifted to OCaml as opaque objects, using phantom types (e.g. [`NSString] NSObject)
+  * and then encapsulated in OCaml objects with all the instance methods of the original ObjC class
