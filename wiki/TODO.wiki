@@ -1,0 +1,8 @@
+#todo, task-list.
+
+= TODO =
+  * unit test for (NSRange) support
+  * unit test for (NSError **) support
+  * add enum values in generated .ml files
+  * get feedback on naming conventions
+  * inheritance and/or coercions
