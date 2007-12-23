@@ -1,8 +1,8 @@
 #summary todo, task-list.
 
 = Next coding steps =
-  * unit test for (NSRange) support
-  * unit test for (NSError **) support
+  * ~~ unit test for (NSRange) support ~~
+  * ~~ unit test for (NSError **) support ~~
   * ~~ add enum values in generated .ml files ~~
   * get feedback on naming conventions
   * inheritance and/or coercions
