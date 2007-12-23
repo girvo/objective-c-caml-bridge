@@ -1,4 +1,4 @@
 #summary Suggestions from users
 
 = Naming =
-  * replace camel casing by _
+  * replace camel casing by underscores
