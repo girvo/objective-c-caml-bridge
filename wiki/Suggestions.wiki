@@ -1,0 +1,4 @@
+#summary Suggestions from users
+
+= Naming =
+  * replace camel casing by _
