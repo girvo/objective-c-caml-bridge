@@ -1,4 +1,4 @@
-#Design principles
+#summary Design principles
 
 = Introduction =
 
