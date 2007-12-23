@@ -7,10 +7,11 @@ ObjC is dynamically typed, Objective Caml is statically typed. The match cannot 
 
 = Details =
 
-  * One unique stub code to invoke ObjC methods from OCaml; this uses NSInvocation, and should be familiar to anyone having looked at the OLE/Comm dispatching style of  API.
-  * An ObjC class is an OCaml object with as methods the class methods of the Objc Class.
+  * One unique stub code to invoke ObjC methods from OCaml; this uses NSInvocation, and should be familiar to anyone having looked at the OLE/Comm dispatching style of  API. This primitive is made available to OCaml, and is inherently *unsafe*. However, we generate wrappers around it that are type safe, for each method that we know how to properly invoke. If we don't (varags, funky pointers, etc.), we simply don't make the method available in OCaml.
+  * An ObjC class is an OCaml object with as methods the class methods of the Objc Class (class_NSFoo = object ... end)
   * ObjC objects are lifted to OCaml as opaque objects, using phantom types (e.g. [`NSString] NSObject)
-  * and then encapsulated in OCaml objects with all the instance methods of the original ObjC class
+  * and then encapsulated in OCaml objects with all the instance methods of the original ObjC class (class native_NSFoo = object ... end)
+  * all categories for a class are compiled as one OCaml class, as long as they are present in the same file; we don't handle categories spread over multiple files (which happens with NSValue and others)
 
 = Source Organization =
   * generator/ : contains the "compiler", which parses .h from frameworks headers directories and generates stub code (.ml and .m files)
