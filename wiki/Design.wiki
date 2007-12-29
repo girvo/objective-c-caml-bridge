@@ -22,6 +22,5 @@ ObjC is dynamically typed, Objective Caml is statically typed. The match cannot 
 
 == Circular dependencies, protocols ==
   * all classes inherit from NSObject, but NSObject also depends on NSString, NSEnumerator and others. We have to find the cycles in the dependency order and compile the wrapper classes as a list of mutually recursive classes.
-  * protocols for a class can be added by any .h header. For example, several .h headers add protocol to the NSObject class. If we want the methods of these protocols to be available in a single wrapper class, we need a global approach to compilating a Framework (or even across Frameworks, but that becomes less practical)
-
+  * categories for a class can be added by any .h header. For example, several .h headers add a category to the NSObject class. If we want the methods of these categories to be available in a single wrapper class for NSObject, we need a global approach to compilating a Framework (or even across Frameworks, but that becomes less practical). This is possible, but also tricky in terms of dependencies, because now NSObject depends on a whole bunch of exotic classes. Instead, we will have OCaml classes for categories that are declared in a different header than the primary class and let the user mix and match when appropriate.
 
